@@ -5,14 +5,16 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:03:30 2017 Robin MILAS
-** Last update Tue Feb 21 11:16:43 2017 Robin MILAS
+** Last update Thu Feb 23 11:05:30 2017 Robin MILAS
 */
+
+#include <math.h>
+#include <SFML/System.h>
 
 float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
 {
   double	factorial;
-  double	length1;
-  double	length2;
+  double	length_multiplied;
 
   factorial = (light_vector.x * normal_vector.x
 	       + light_vector.y * normal_vector.y

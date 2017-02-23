@@ -5,11 +5,11 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:25:53 2017 Robin MILAS
-** Last update Tue Feb 21 11:14:15 2017 Robin MILAS
+** Last update Thu Feb 23 11:02:12 2017 Robin MILAS
 */
 
 #include <math.h>
-#include "raytracer.h"
+#include <SFML/System.h>
 
 sfVector3f	get_normal_sphere(sfVector3f intersection_point)
 {

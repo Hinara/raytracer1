@@ -5,11 +5,11 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:36:45 2017 Robin MILAS
-** Last update Tue Feb 21 11:43:10 2017 Robin MILAS
+** Last update Thu Feb 23 11:04:41 2017 Robin MILAS
 */
 
 #include <math.h>
-#include "raytracer.h"
+#include <SFML/System.h>
 
 sfVector3f	get_normal_cone(sfVector3f intersection_point,
 				float semiangle)

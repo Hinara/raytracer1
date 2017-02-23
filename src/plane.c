@@ -5,11 +5,11 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:25:53 2017 Robin MILAS
-** Last update Mon Feb 20 16:54:41 2017 Robin MILAS
+** Last update Thu Feb 23 11:07:01 2017 Robin MILAS
 */
 
 #include <math.h>
-#include "raytracer.h"
+#include <SFML/System.h>
 
 sfVector3f	get_normal_plane(int upward)
 {
@@ -21,9 +21,9 @@ sfVector3f	get_normal_plane(int upward)
   return (res);
 }
 
-float	intersect_plane(sfVector3f *pos, sfVector3f *dir, int type)
+float	intersect_plane(sfVector3f pos, sfVector3f dir)
 {
-  if (dir->z == 0.0)
+  if (dir.z == 0.0)
     return (NAN);
-  return (-(pos->z / dir->z));
+  return (-(pos.z / dir.z));
 }

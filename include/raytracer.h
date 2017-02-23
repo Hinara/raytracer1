@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Tue Feb 21 11:16:18 2017 Robin MILAS
+** Last update Tue Feb 21 13:26:23 2017 Robin MILAS
 */
 
 #ifndef _RAYTRACER_H_
@@ -42,16 +42,16 @@ typedef struct		s_win
   sfSprite		*sprite;
 }			t_win;
 
-typedef struct	s_base3d
+typedef struct	s_coord3d
 {
   sfVector3f	pos;
   sfVector3f	rot;
-}		t_base3d;
+}		t_coord3d;
 
 typedef struct	s_obj
 {
   int		obj_type;
-  t_base3d	base;
+  t_coord3d      coord;
   sfColor	color;
   void		*more;
   struct s_obj	*next;
@@ -59,7 +59,7 @@ typedef struct	s_obj
 
 typedef struct	s_scene
 {
-  t_base3d	cam;
+  t_coord3d	cam;
   t_obj		*objs;
 }		t_scene;
 
@@ -69,18 +69,18 @@ typedef struct	s_objtype
   double	(*f)(sfVector3f *pos, sfVector3f *dir, t_obj *obj);
 }		t_objtype;
 
-int			add_sphere(t_scene *scene, t_base3d base,
+int			add_sphere(t_scene *scene, t_coord3d base,
 				   sfColor color, float radius);
-int			add_cylinder(t_scene *scene, t_base3d base,
+int			add_cylinder(t_scene *scene, t_coord3d base,
 				     sfColor color, float radius);
-int			add_cone(t_scene *scene, t_base3d base,
+int			add_cone(t_scene *scene, t_coord3d base,
 				 sfColor color, float angle);
-int			add_plane(t_scene *scene, t_base3d base,
+int			add_plane(t_scene *scene, t_coord3d base,
 				  sfColor color, int type);
 
 int			init_scene(t_scene *scene, t_base3d cam);
-void			base_pos(t_base3d *base, float x, float y, float z);
-void			base_rot(t_base3d *base, float x, float y, float z);
+void			base_pos(t_coord3d *base, float x, float y, float z);
+void			base_rot(t_coord3d *base, float x, float y, float z);
 sfVector3f		calc_dir_vector(sfVector2i scr_size, sfVector2i scr_pos);
 void			my_put_pixel(t_my_framebuffer *buf, int x,
 				     int y, sfColor color);
