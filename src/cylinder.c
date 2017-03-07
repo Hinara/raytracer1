@@ -5,11 +5,12 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:34:24 2017 Robin MILAS
-** Last update Thu Feb 23 11:05:19 2017 Robin MILAS
+** Last update Tue Mar  7 22:05:16 2017 Robin MILAS
 */
 
 #include <math.h>
 #include <SFML/System.h>
+#include "raytracer.h"
 
 sfVector3f	get_normal_cylinder(sfVector3f intersection_point)
 {
@@ -17,36 +18,11 @@ sfVector3f	get_normal_cylinder(sfVector3f intersection_point)
   return (intersection_point);
 }
 
-static double	intersection(double a, double b, double c)
+float	intersect_cylinder(sfVector3f pos, sfVector3f dir, float p)
 {
-  double	d;
-  double	t1;
-  double	t2;
-
-  d = pow(b, 2) - (4 * a * c);
-  if (d < 0)
-    {
-      return (NAN);
-    }
-  else if (d == 0.0)
-    {
-      return (-b / (2 * a));
-    }
-  else
-    {
-      t1 = (-b + sqrt(d)) / (2 * a);
-      t2 = (-b - sqrt(d)) / (2 * a);
-      if (t1 < t2 && t1 >= 0.0)
-	return (t1);
-      return (t2);
-    }
-}
-
-float	intersect_cylinder(sfVector3f pos, sfVector3f dir, int p)
-{
-  double	a;
-  double	b;
-  double	c;
+  float	a;
+  float	b;
+  float	c;
 
   if (dir.x == 0 && dir.y == 0)
     {
@@ -56,7 +32,7 @@ float	intersect_cylinder(sfVector3f pos, sfVector3f dir, int p)
 	return (NAN);
     }
   a = pow(dir.x, 2) + pow(dir.y, 2);
-  b = 2 * ((double) pos.x * dir.x + (double) pos.y * dir.y);
+  b = 2 * (pos.x * dir.x + pos.y * dir.y);
   c = pow(pos.x, 2) + pow(pos.y, 2) - pow(p, 2);
   return (intersection(a, b, c));
 }

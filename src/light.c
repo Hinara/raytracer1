@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:03:30 2017 Robin MILAS
-** Last update Thu Feb 23 11:05:30 2017 Robin MILAS
+** Last update Tue Mar  7 20:45:34 2017 Robin MILAS
 */
 
 #include <math.h>
@@ -19,11 +19,11 @@ float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
   factorial = (light_vector.x * normal_vector.x
 	       + light_vector.y * normal_vector.y
 	       + light_vector.z * normal_vector.z);
-  length_multiplied = (sqrt(pow(light_vector.x, 2)
-			    + pow(light_vector.y, 2)
-			    + pow(light_vector.z, 2))
-		       * sqrt(pow(normal_vector.x, 2)
-			      + pow(normal_vector.y, 2)
-			      + pow(normal_vector.z, 2)));
-  return (acos(factorial/length_multiplied));
+  length_multiplied = (sqrt(powf(light_vector.x, 2)
+			    + powf(light_vector.y, 2)
+			    + powf(light_vector.z, 2))
+		       * sqrt(powf(normal_vector.x, 2)
+			      + powf(normal_vector.y, 2)
+			      + powf(normal_vector.z, 2)));
+  return (factorial / length_multiplied);
 }

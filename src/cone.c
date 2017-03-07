@@ -5,11 +5,12 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:36:45 2017 Robin MILAS
-** Last update Thu Feb 23 11:04:41 2017 Robin MILAS
+** Last update Tue Mar  7 22:02:26 2017 Robin MILAS
 */
 
 #include <math.h>
 #include <SFML/System.h>
+#include "raytracer.h"
 
 sfVector3f	get_normal_cone(sfVector3f intersection_point,
 				float semiangle)
@@ -18,43 +19,18 @@ sfVector3f	get_normal_cone(sfVector3f intersection_point,
   return (intersection_point);
 }
 
-static double	intersection(double a, double b, double c)
+float	intersect_cone(sfVector3f pos, sfVector3f dir, float p)
 {
-  double	d;
-  double	t1;
-  double	t2;
-
-  d = pow(b, 2) - (4 * a * c);
-  if (d < 0)
-    {
-      return (NAN);
-    }
-  else if (d == 0.0)
-    {
-      return (-b / (2 * a));
-    }
-  else
-    {
-      t1 = (-b + sqrt(d)) / (2 * a);
-      t2 = (-b - sqrt(d)) / (2 * a);
-      if (t1 < t2 && t1 >= 0.0)
-	return (t1);
-      return (t2);
-    }
-}
-
-float	intersect_cone(sfVector3f pos, sfVector3f dir, int p)
-{
-  double	a;
-  double	b;
-  double	c;
-  double	angle;
+  float	a;
+  float	b;
+  float	c;
+  float	angle;
 
   angle = p * M_PI / 180;
-  a = pow(dir.x, 2) + pow(dir.y, 2) - pow(dir.z, 2) * pow(tan(angle), 2);
-  b = 2 * ((double) pos.x * dir.x
-	   + (double) pos.y * dir.y
-	   - (double) pos.z * dir.z * pow(tan(angle), 2));
-  c = pow(pos.x, 2) + pow(pos.y, 2) - (pow(pos.z, 2) * pow(tan(angle), 2));
+  a = powf(dir.x, 2) + powf(dir.y, 2) - powf(dir.z, 2) * powf(tanf(angle), 2);
+  b = 2 * (pos.x * dir.x
+	   + pos.y * dir.y
+	   - pos.z * dir.z * powf(tanf(angle), 2));
+  c = powf(pos.x, 2) + powf(pos.y, 2) - (powf(pos.z, 2) * powf(tanf(angle), 2));
   return (intersection(a, b, c));
 }
