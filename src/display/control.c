@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Jan 11 22:11:32 2017 Robin MILAS
-** Last update Mon Mar  6 13:12:45 2017 Robin MILAS
+** Last update Wed Mar  8 15:05:41 2017 Robin MILAS
 */
 
 #include "raytracer.h"
@@ -24,15 +24,15 @@ char    rotate(t_scene *scene)
 	   (sfKeyboard_isKeyPressed(sfKeyD) == sfTrue));
   if (rot_x)
     {
-      scene->cam.rot.x += M_PI/32 * rot_x;
+      scene->cam.rot.x += ROTATE_FACTOR * rot_x;
     }
   if (rot_y)
     {
-      scene->cam.rot.y += M_PI/32 * rot_y;
+      scene->cam.rot.y += ROTATE_FACTOR * rot_y;
     }
   if (rot_z)
     {
-      scene->cam.rot.z += M_PI/32 * rot_z;
+      scene->cam.rot.z += ROTATE_FACTOR * rot_z;
     }
   return (rot_x || rot_y || rot_z);
 }

@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Mar  7 21:58:14 2017 Robin MILAS
-** Last update Wed Mar  8 11:35:19 2017 Robin MILAS
+** Last update Wed Mar  8 15:41:05 2017 Robin MILAS
 */
 
 #include <math.h>
@@ -19,7 +19,7 @@ float	intersection(double a, double b, double c)
   d = pow(b, 2) - (4 * a * c);
   if (d < 0)
     {
-      return (-1);
+      return (-1.0f);
     }
   else if (d == 0.0)
     {

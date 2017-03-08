@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Tue Mar  7 22:28:31 2017 Robin MILAS
+** Last update Wed Mar  8 15:40:26 2017 Robin MILAS
 */
 
 #ifndef _RAYTRACER_H_
@@ -21,12 +21,16 @@
 
 # define SKY	sfBlack
 
-# define DIST	500
-# define ROTATE_COEF	0.1
+# define DIST			500
+# define ROTATE_FACTOR		10
 
 typedef enum	e_shape_type
 {
-  SPHERE, PLANE, CYLINDER, CONE, UNKNOWN
+  SPHERE,
+  PLANE,
+  CYLINDER,
+  CONE,
+  UNKNOWN
 }		t_shape_type;
 
 /*
@@ -104,7 +108,7 @@ void			raytracer(t_scene *scene, t_win *win);
 t_my_framebuffer	my_framebuffer_create(int width, int height);
 sfColor			color_brightness(sfColor color, float multiplier);
 float			intersection(double a, double b, double c);
-
+double			rad(double x);
 /*
 ** Init structure base structure
 */

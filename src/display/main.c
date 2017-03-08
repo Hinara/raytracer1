@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:00:48 2017 Robin MILAS
-** Last update Wed Mar  8 11:38:51 2017 Robin MILAS
+** Last update Wed Mar  8 12:16:11 2017 Robin MILAS
 */
 
 #include "raytracer.h"
@@ -20,9 +20,9 @@ int		main()
   coord_rot(&coord3d, 0, 0, 0);
   if (init_scene(&scene, coord3d) < 0)
     return (1);
-  scene.light.x = 0.0f;
-  scene.light.y = 40.0f;
-  scene.light.z = 25.0f;
+  scene.light.x = -50.0f;
+  scene.light.y = 0.0f;
+  scene.light.z = -9.0f;
   coord_pos(&coord3d, 0, 0, -10);
   coord_rot(&coord3d, 0, 0, 0);
   if (add_plane(&scene, coord3d, sfCyan) < 0)
