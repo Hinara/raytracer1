@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Tue Mar  7 21:28:54 2017 Robin MILAS
+** Last update Tue Mar  7 22:28:43 2017 Robin MILAS
 */
 
 #include <math.h>
@@ -16,9 +16,12 @@ float		find_k(t_scene *scene, sfVector3f *dir, t_obj *obj)
   sfVector3f	pos;
   t_intersect	intersect;
 
+  pos = rev_translate(scene->cam.pos, obj->coord.pos);
+    /*
   pos.x = scene->cam.pos.x - obj->coord.pos.x;
   pos.y = scene->cam.pos.y - obj->coord.pos.y;
   pos.z = scene->cam.pos.z - obj->coord.pos.z;
+    */
   if ((intersect = intersect_decoder(obj->shape.shape)) != NULL)
     return (intersect(&pos, dir, obj));
   return (NAN);

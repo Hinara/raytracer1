@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Tue Mar  7 22:01:19 2017 Robin MILAS
+** Last update Tue Mar  7 22:28:31 2017 Robin MILAS
 */
 
 #ifndef _RAYTRACER_H_
@@ -130,6 +130,9 @@ sfVector3f	calc_dir_vector(float dist_to_plane,
 				sfVector2i iscreen_size,
 				sfVector2i screen_pos);
 sfVector3f	translate(sfVector3f to_translate, sfVector3f translations);
+sfVector3f	rev_translate(sfVector3f to_translate,
+			      sfVector3f translations);
+
 sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles);
 
