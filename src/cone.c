@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:36:45 2017 Robin MILAS
-** Last update Tue Mar  7 22:02:26 2017 Robin MILAS
+** Last update Thu Mar  9 16:46:21 2017 Milas Robin
 */
 
 #include <math.h>
@@ -31,6 +31,7 @@ float	intersect_cone(sfVector3f pos, sfVector3f dir, float p)
   b = 2 * (pos.x * dir.x
 	   + pos.y * dir.y
 	   - pos.z * dir.z * powf(tanf(angle), 2));
-  c = powf(pos.x, 2) + powf(pos.y, 2) - (powf(pos.z, 2) * powf(tanf(angle), 2));
+  c = powf(pos.x, 2) + powf(pos.y, 2);
+  c -= (powf(pos.z, 2) * powf(tanf(angle), 2));
   return (intersection(a, b, c));
 }

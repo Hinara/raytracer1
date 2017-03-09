@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Wed Mar  8 15:40:26 2017 Robin MILAS
+** Last update Thu Mar  9 16:42:23 2017 Milas Robin
 */
 
 #ifndef _RAYTRACER_H_
@@ -109,11 +109,9 @@ t_my_framebuffer	my_framebuffer_create(int width, int height);
 sfColor			color_brightness(sfColor color, float multiplier);
 float			intersection(double a, double b, double c);
 double			rad(double x);
-/*
-** Init structure base structure
-*/
-void			coord_pos(t_coord3d *base, float x, float y, float z);
-void		        coord_rot(t_coord3d *base, float x, float y, float z);
+sfVector3f	vector_create(float x, float y, float z);
+sfVector3f	vector_multiply(sfVector3f vec, float k);
+sfVector3f	vector_move(sfVector3f org, sfVector3f dir, float k);
 
 /*
 ** Add forms

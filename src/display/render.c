@@ -5,20 +5,20 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Wed Mar  8 11:25:56 2017 Robin MILAS
+** Last update Thu Mar  9 16:49:27 2017 Milas Robin
 */
 
 #include <math.h>
 #include "raytracer.h"
 
-float		find_k(t_scene *scene, sfVector3f *dir, t_obj *obj)
+float		find_k(sfVector3f *pos, sfVector3f *dir, t_obj *obj)
 {
-  sfVector3f	pos;
+  sfVector3f	c_pos;
   t_intersect	intersect;
 
-  pos = rev_translate(scene->cam.pos, obj->coord.pos);
+  c_pos = rev_translate(*pos, obj->coord.pos);
   if ((intersect = intersect_decoder(obj->shape.shape)) != NULL)
-    return (intersect(&pos, dir, obj));
+    return (intersect(&c_pos, dir, obj));
   return (NAN);
 }
 
@@ -30,12 +30,8 @@ float		find_cos(t_scene *scene, sfVector3f *dir, t_obj *obj, float k)
   sfVector3f	normal_v;
   float		cos;
 
-  pos.x = scene->cam.pos.x - obj->coord.pos.x;
-  pos.y = scene->cam.pos.y - obj->coord.pos.y;
-  pos.z = scene->cam.pos.z - obj->coord.pos.z;
-  light.x = scene->light.x - (obj->coord.pos.x + dir->x * k);
-  light.y = scene->light.y - (obj->coord.pos.y + dir->y * k);
-  light.z = scene->light.z - (obj->coord.pos.z + dir->z * k);
+  pos = rev_translate(scene->cam.pos, obj->coord.pos);
+  light = rev_translate(scene->light, vector_move(obj->coord.pos, *dir, k));
   if ((normal = normal_decoder(obj->shape.shape)) != NULL)
     {
       normal_v = normal(&pos, dir, obj, k);
@@ -47,7 +43,8 @@ float		find_cos(t_scene *scene, sfVector3f *dir, t_obj *obj, float k)
   return (1.0f);
 }
 
-float	        get_closest(t_scene *scene, sfVector3f *dir, t_obj **closest)
+float	        get_closest(t_scene *scene, sfVector3f *pos,
+			    sfVector3f *dir, t_obj **closest)
 {
   t_obj	*ptr;
   float	k;
@@ -58,7 +55,7 @@ float	        get_closest(t_scene *scene, sfVector3f *dir, t_obj **closest)
   *closest = NULL;
   while (ptr)
     {
-      temp_k = find_k(scene, dir, ptr);
+      temp_k = find_k(pos, dir, ptr);
       if (temp_k > 0.0f && temp_k < k)
 	{
 	  k = temp_k;
@@ -69,16 +66,16 @@ float	        get_closest(t_scene *scene, sfVector3f *dir, t_obj **closest)
   return (k);
 }
 
-sfColor	get_pixel(t_scene *scene, sfVector3f *dir)
+sfColor	get_pixel(t_scene *s, sfVector3f *dir)
 {
   sfColor	color;
   t_obj		*obj;
   float		k;
 
-  if ((k = get_closest(scene, dir, &obj)) == INFINITY)
+  if ((k = get_closest(s, &(s->cam.pos), dir, &obj)) == INFINITY)
     return (SKY);
   color = obj->shape.color;
-  color = color_brightness(color, find_cos(scene, dir, obj, k));
+  color = color_brightness(color, find_cos(s, dir, obj, k));
   return (color);
 }
 

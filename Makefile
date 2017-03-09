@@ -5,7 +5,7 @@
 ## Login   <robin.milas@epitech.net>
 ## 
 ## Started on  Mon Dec  5 18:52:38 2016 Robin MILAS
-## Last update Tue Mar  7 21:59:44 2017 Robin MILAS
+## Last update Thu Mar  9 14:44:28 2017 Milas Robin
 ##
 
 CC	=	gcc
@@ -24,7 +24,6 @@ SRCS	=	src/display/color.c		\
 		src/decoder/normal.c		\
 		src/decoder/intersect.c		\
 		src/scene/add_objs.c		\
-		src/scene/coord3d.c		\
 		src/scene/scene.c		\
 		src/calc_dir_vector.c		\
 		src/cone.c			\
@@ -34,13 +33,14 @@ SRCS	=	src/display/color.c		\
 		src/rotate.c			\
 		src/sphere.c			\
 		src/translate.c			\
-		src/utils.c
+		src/utils.c			\
+		src/vector.c
 
 OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	raytracer
 
-## -Werror
+## -Werror  -ffast-math -O3
 CFLAGS	=	-Wall -Wextra -I./include -ffast-math -O3
 
 LDFLAGS	=	-lm -lc_graph_prog

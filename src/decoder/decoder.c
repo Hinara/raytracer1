@@ -12,11 +12,11 @@
 
 static const t_obj_dec	objtypes[] =
   {
-    {SPHERE, &decoder_sphere_intersect, decoder_sphere_normal},
-    {CONE, &decoder_cone_intersect, decoder_cone_normal},
-    {CYLINDER, &decoder_cylinder_intersect, decoder_cylinder_normal},
-    {PLANE, &decoder_plane_intersect, decoder_plane_normal},
-    {UNKNOWN, &decoder_sphere_intersect, decoder_sphere_normal}
+    {SPHERE, decoder_sphere_intersect, decoder_sphere_normal},
+    {CONE, decoder_cone_intersect, decoder_cone_normal},
+    {CYLINDER, decoder_cylinder_intersect, decoder_cylinder_normal},
+    {PLANE, decoder_plane_intersect, decoder_plane_normal},
+    {UNKNOWN, decoder_sphere_intersect, decoder_sphere_normal}
   };
 
 t_intersect	intersect_decoder(t_shape_type type)
