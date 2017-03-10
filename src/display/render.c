@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Thu Mar  9 16:49:27 2017 Milas Robin
+** Last update Fri Mar 10 23:26:10 2017 Milas Robin
 */
 
 #include <math.h>
@@ -31,7 +31,7 @@ float		find_cos(t_scene *scene, sfVector3f *dir, t_obj *obj, float k)
   float		cos;
 
   pos = rev_translate(scene->cam.pos, obj->coord.pos);
-  light = rev_translate(scene->light, vector_move(obj->coord.pos, *dir, k));
+  light = rev_translate(scene->light, vector_move(scene->cam.pos, *dir, k));
   if ((normal = normal_decoder(obj->shape.shape)) != NULL)
     {
       normal_v = normal(&pos, dir, obj, k);
@@ -69,6 +69,9 @@ float	        get_closest(t_scene *scene, sfVector3f *pos,
 sfColor	get_pixel(t_scene *s, sfVector3f *dir)
 {
   sfColor	color;
+  sfVector3f	light_v;
+  sfVector3f    light_pos;
+  sfVector3f    pos;
   t_obj		*obj;
   float		k;
 
@@ -76,6 +79,12 @@ sfColor	get_pixel(t_scene *s, sfVector3f *dir)
     return (SKY);
   color = obj->shape.color;
   color = color_brightness(color, find_cos(s, dir, obj, k));
+  pos = vector_move(s->cam.pos, *dir, k);
+  light_v = rev_translate(pos, s->light);
+  if ((k = get_closest(s, &(s->light), &light_v, &obj)) < 0.99f)
+    {
+      color = color_brightness(color, 0.5f);
+    }
   return (color);
 }
 
