@@ -5,7 +5,7 @@
 ** Login   <milasr@epitech.net>
 ** 
 ** Started on  Thu Mar  9 14:37:37 2017 Milas Robin
-** Last update Thu Mar  9 16:46:31 2017 Milas Robin
+** Last update Sat Mar 11 00:09:12 2017 Milas Robin
 */
 
 #include <SFML/System.h>
@@ -31,5 +31,13 @@ sfVector3f	vector_multiply(sfVector3f vec, float k)
   vec.x *= k;
   vec.y *= k;
   vec.z *= k;
+  return (vec);
+}
+
+sfVector3f	vector_reverse(sfVector3f vec)
+{
+  vec.x = -vec.x;
+  vec.y = -vec.y;
+  vec.z = -vec.z;
   return (vec);
 }

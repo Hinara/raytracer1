@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Thu Mar  9 16:42:23 2017 Milas Robin
+** Last update Sat Mar 11 00:10:19 2017 Milas Robin
 */
 
 #ifndef _RAYTRACER_H_
@@ -112,6 +112,7 @@ double			rad(double x);
 sfVector3f	vector_create(float x, float y, float z);
 sfVector3f	vector_multiply(sfVector3f vec, float k);
 sfVector3f	vector_move(sfVector3f org, sfVector3f dir, float k);
+sfVector3f	vector_reverse(sfVector3f vec);
 
 /*
 ** Add forms

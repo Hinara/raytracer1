@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Sat Mar 11 00:02:30 2017 Milas Robin
+** Last update Sat Mar 11 00:25:15 2017 Milas Robin
 */
 
 #include <math.h>
@@ -14,28 +14,34 @@
 float		find_k(sfVector3f *pos, sfVector3f *dir, t_obj *obj)
 {
   sfVector3f	c_pos;
+  sfVector3f	c_dir;
   t_intersect	intersect;
 
   c_pos = rev_translate(*pos, obj->coord.pos);
+  c_pos = rotate_zyx(c_pos, vector_reverse(obj->coord.rot));
+  c_dir = rotate_zyx(*dir, vector_reverse(obj->coord.rot));
   if ((intersect = intersect_decoder(obj->shape.shape)) != NULL)
-    return (intersect(&c_pos, dir, obj));
+    return (intersect(&c_pos, &c_dir, obj));
   return (NAN);
 }
 
 float		find_cos(t_scene *scene, sfVector3f *dir, t_obj *obj, float k)
 {
   sfVector3f	pos;
-  sfVector3f    light;
   t_normal	normal;
   sfVector3f	normal_v;
+  sfVector3f    light_v;
+  sfVector3f    c_dir;
   float		cos;
 
   pos = rev_translate(scene->cam.pos, obj->coord.pos);
-  light = rev_translate(scene->light, vector_move(scene->cam.pos, *dir, k));
+  pos = rotate_zyx(pos, vector_reverse(obj->coord.rot));
+  c_dir = rotate_zyx(*dir, vector_reverse(obj->coord.rot));
+  light_v = rev_translate(scene->light, vector_move(scene->cam.pos, c_dir, k));
   if ((normal = normal_decoder(obj->shape.shape)) != NULL)
     {
-      normal_v = normal(&pos, dir, obj, k);
-      cos = get_light_coef(light, normal_v);
+      normal_v = normal(&pos, &c_dir, obj, k);
+      cos = get_light_coef(light_v, normal_v);
       if (cos <= 0.0f)
 	return (0.0f);
       return (cos);
