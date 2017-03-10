@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Fri Mar 10 23:26:10 2017 Milas Robin
+** Last update Sat Mar 11 00:02:30 2017 Milas Robin
 */
 
 #include <math.h>
@@ -70,7 +70,6 @@ sfColor	get_pixel(t_scene *s, sfVector3f *dir)
 {
   sfColor	color;
   sfVector3f	light_v;
-  sfVector3f    light_pos;
   sfVector3f    pos;
   t_obj		*obj;
   float		k;
