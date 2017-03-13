@@ -5,14 +5,15 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Feb 21 13:38:46 2017 Robin MILAS
-** Last update Tue Mar  7 21:20:24 2017 Robin MILAS
+** Last update Sat Mar 11 18:17:47 2017 Milas Robin
 */
 
 #include <stdlib.h>
 #include <SFML/System.h>
 #include "raytracer.h"
 
-int	add_obj(t_scene *scene, t_coord3d coord, t_shape shape, void *more)
+static int	add_obj(t_scene *scene, t_coord3d coord,
+			t_shape shape, void *more)
 {
   t_obj		**ptr;
   t_obj		*obj;
@@ -43,8 +44,8 @@ int	add_sphere(t_scene *scene, t_coord3d base, sfColor color, float radius)
   return (add_obj(scene, base, shape, r));
 }
 
-int	add_cylinder(t_scene *scene,
-		     t_coord3d base, sfColor color, float radius)
+int	add_cylinder(t_scene *scene, t_coord3d base,
+		     sfColor color, float radius)
 {
   float		*r;
   t_shape	shape;

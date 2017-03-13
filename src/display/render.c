@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Sat Mar 11 00:25:15 2017 Milas Robin
+** Last update Sat Mar 11 18:38:54 2017 Milas Robin
 */
 
 #include <math.h>
@@ -81,7 +81,7 @@ sfColor	get_pixel(t_scene *s, sfVector3f *dir)
   float		k;
 
   if ((k = get_closest(s, &(s->cam.pos), dir, &obj)) == INFINITY)
-    return (SKY);
+    return (s->sky);
   color = obj->shape.color;
   color = color_brightness(color, find_cos(s, dir, obj, k));
   pos = vector_move(s->cam.pos, *dir, k);

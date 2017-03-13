@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Jan 11 22:11:32 2017 Robin MILAS
-** Last update Wed Mar  8 15:05:41 2017 Robin MILAS
+** Last update Sat Mar 11 02:48:52 2017 Milas Robin
 */
 
 #include "raytracer.h"
@@ -22,18 +22,9 @@ char    rotate(t_scene *scene)
 	   (sfKeyboard_isKeyPressed(sfKeyZ) == sfTrue));
   rot_z = ((sfKeyboard_isKeyPressed(sfKeyQ) == sfTrue) -
 	   (sfKeyboard_isKeyPressed(sfKeyD) == sfTrue));
-  if (rot_x)
-    {
-      scene->cam.rot.x += ROTATE_FACTOR * rot_x;
-    }
-  if (rot_y)
-    {
-      scene->cam.rot.y += ROTATE_FACTOR * rot_y;
-    }
-  if (rot_z)
-    {
-      scene->cam.rot.z += ROTATE_FACTOR * rot_z;
-    }
+  scene->cam.rot.x += ROTATE_FACTOR * rot_x;
+  scene->cam.rot.y += ROTATE_FACTOR * rot_y;
+  scene->cam.rot.z += ROTATE_FACTOR * rot_z;
   return (rot_x || rot_y || rot_z);
 }
 
@@ -49,17 +40,8 @@ char	moves(t_scene *scene)
 	    (sfKeyboard_isKeyPressed(sfKeyM) == sfTrue));
   move_z = ((sfKeyboard_isKeyPressed(sfKeyI) == sfTrue) -
 	    (sfKeyboard_isKeyPressed(sfKeyP) == sfTrue));
-  if (move_x)
-    {
-      scene->cam.pos.x += move_x;
-    }
-  if (move_y)
-    {
-      scene->cam.pos.y += move_y;
-    }
-  if (move_z)
-    {
-      scene->cam.pos.z += move_z;
-    }
+  scene->cam.pos.x += move_x;
+  scene->cam.pos.y += move_y;
+  scene->cam.pos.z += move_z;
   return (move_x || move_y || move_z);
 }

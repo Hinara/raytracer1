@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:00:31 2017 Robin MILAS
-** Last update Wed Mar  8 15:41:24 2017 Robin MILAS
+** Last update Mon Mar 13 10:36:49 2017 Milas Robin
 */
 
 #include <math.h>
@@ -52,8 +52,8 @@ sfVector3f	rotate_xyz(sfVector3f rot, sfVector3f angle)
 
 sfVector3f	rotate_zyx(sfVector3f rot, sfVector3f angle)
 {
-  rot = rotate_x(&rot, &angle);
-  rot = rotate_y(&rot, &angle);
   rot = rotate_z(&rot, &angle);
+  rot = rotate_y(&rot, &angle);
+  rot = rotate_x(&rot, &angle);
   return (rot);
 }
