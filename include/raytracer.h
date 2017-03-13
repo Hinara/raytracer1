@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Sat Mar 11 04:14:43 2017 Milas Robin
+** Last update Sat Mar 11 18:39:28 2017 Milas Robin
 */
 
 #ifndef _RAYTRACER_H_
@@ -118,6 +118,7 @@ typedef struct	s_obj
 */
 typedef struct	s_scene
 {
+  sfColor	sky;
   t_coord3d	cam;
   t_obj		*objs;
   sfVector3f	light;
@@ -238,7 +239,7 @@ int	add_plane(t_scene *scene, t_coord3d base, sfColor color);
 /*
 ** Scene function
 */
-int	init_scene(t_scene *scene, t_coord3d cam);
+int	init_scene(t_scene *scene, t_coord3d cam, sfColor sky);
 
 /*
 ** Math util function
