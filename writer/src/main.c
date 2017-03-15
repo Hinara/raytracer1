@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Thu Jan 12 19:30:55 2017 Robin MILAS
-** Last update Mon Mar 13 16:27:46 2017 Milas Robin
+** Last update Wed Mar 15 11:37:31 2017 Milas Robin
 */
 
 #include <fcntl.h>
@@ -54,8 +54,6 @@ int	init(t_app *app, char *filepath)
   app->exit = 0;
   app->init = 0;
   app->filepath = filepath;
-  if (access(filepath, F_OK) < 0)
-    return (0);
   if ((fd = open(filepath, O_RDONLY)) < 0)
     return (my_error(UNREADABLE));
   if (fill_struct(fd, app) < 0)

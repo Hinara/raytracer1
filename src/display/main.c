@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:00:48 2017 Robin MILAS
-** Last update Tue Mar 14 14:34:11 2017 Milas Robin
+** Last update Wed Mar 15 11:37:16 2017 Milas Robin
 */
 
 #include <unistd.h>
@@ -22,8 +22,6 @@ int		main(int ac, char **av)
     {
       return (my_print("Need a file to work\n", 2, 0));
     }
-  if (access(av[1], F_OK) < 0)
-    return (0);
   if ((fd = open(av[1], O_RDONLY)) < 0)
     {
       return (my_print(UNREADABLE, 2, 1));
