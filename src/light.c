@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:03:30 2017 Robin MILAS
-** Last update Tue Mar  7 20:45:34 2017 Robin MILAS
+** Last update Mon Mar 13 15:21:10 2017 Milas Robin
 */
 
 #include <math.h>
@@ -15,6 +15,7 @@ float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
 {
   double	factorial;
   double	length_multiplied;
+  double	res;
 
   factorial = (light_vector.x * normal_vector.x
 	       + light_vector.y * normal_vector.y
@@ -25,5 +26,8 @@ float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
 		       * sqrt(powf(normal_vector.x, 2)
 			      + powf(normal_vector.y, 2)
 			      + powf(normal_vector.z, 2)));
-  return (factorial / length_multiplied);
+  res = factorial / length_multiplied;
+  if (!(res >= 0.0))
+    res = 0.0;
+  return (res);
 }

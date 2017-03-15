@@ -5,7 +5,7 @@
 ## Login   <robin.milas@epitech.net>
 ## 
 ## Started on  Mon Dec  5 18:52:38 2016 Robin MILAS
-## Last update Thu Mar  9 14:44:28 2017 Milas Robin
+## Last update Tue Mar 14 16:26:04 2017 Milas Robin
 ##
 
 CC	=	gcc
@@ -16,6 +16,8 @@ SRCS	=	src/display/color.c		\
 		src/display/control.c		\
 		src/display/framebuffer.c	\
 		src/display/main.c		\
+		src/display/free.c		\
+		src/display/reader.c		\
 		src/display/my_put_pixel.c	\
 		src/display/render.c		\
 		src/display/utils.c		\
@@ -40,8 +42,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	raytracer
 
-## -Werror  -ffast-math -O3
-CFLAGS	=	-Wall -Wextra -I./include -ffast-math -O3
+CFLAGS	=	-Wall -Wextra -Werror -I./include -pedantic -ffast-math -O3
 
 LDFLAGS	=	-lm -lc_graph_prog
 

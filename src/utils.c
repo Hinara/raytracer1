@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Mar  7 21:58:14 2017 Robin MILAS
-** Last update Fri Mar 10 23:57:17 2017 Milas Robin
+** Last update Mon Mar 13 18:21:56 2017 Milas Robin
 */
 
 #include <math.h>
@@ -36,4 +36,20 @@ float	intersection(double a, double b, double c)
       else
 	return (-1.0f);
     }
+}
+
+int	my_strcmp(char *s1, char *s2)
+{
+  int	index;
+
+  index = 0;
+  while (s1[index] == s2[index])
+    {
+      if (s1[index] == '\0')
+	{
+	  return (0);
+	}
+      index = index + 1;
+    }
+  return (s1[index] - s2[index]);
 }

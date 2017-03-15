@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Sat Mar 11 18:38:54 2017 Milas Robin
+** Last update Tue Mar 14 14:34:50 2017 Milas Robin
 */
 
 #include <math.h>
@@ -42,8 +42,6 @@ float		find_cos(t_scene *scene, sfVector3f *dir, t_obj *obj, float k)
     {
       normal_v = normal(&pos, &c_dir, obj, k);
       cos = get_light_coef(light_v, normal_v);
-      if (cos <= 0.0f)
-	return (0.0f);
       return (cos);
     }
   return (1.0f);
@@ -80,7 +78,8 @@ sfColor	get_pixel(t_scene *s, sfVector3f *dir)
   t_obj		*obj;
   float		k;
 
-  if ((k = get_closest(s, &(s->cam.pos), dir, &obj)) == INFINITY)
+  if ((k = get_closest(s, &(s->cam.pos), dir, &obj)) == INFINITY ||
+      obj == NULL)
     return (s->sky);
   color = obj->shape.color;
   color = color_brightness(color, find_cos(s, dir, obj, k));

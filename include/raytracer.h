@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Sat Mar 11 18:39:28 2017 Milas Robin
+** Last update Tue Mar 14 14:28:28 2017 Milas Robin
 */
 
 #ifndef _RAYTRACER_H_
@@ -14,6 +14,7 @@
 /*
 ** Necessary include for prototypes
 */
+# include <unistd.h>
 # include <SFML/Graphics.h>
 
 /*
@@ -41,6 +42,13 @@
 ** Rotation factor when a player rotate the camera
 */
 # define ROTATE_FACTOR		10
+
+/*
+** Error messages
+*/
+# define UNREADABLE	"Unreadable file\n"
+# define INVALID	"Invalid content\n"
+# define MAGIC		"!RAYTRACER"
 
 /*
 ** A enum of all the available shapes
@@ -118,9 +126,9 @@ typedef struct	s_obj
 */
 typedef struct	s_scene
 {
+  t_obj		*objs;
   sfColor	sky;
   t_coord3d	cam;
-  t_obj		*objs;
   sfVector3f	light;
 }		t_scene;
 
@@ -145,6 +153,12 @@ typedef struct	s_obj_dec
   t_intersect	intersect;
   t_normal	normal;
 }		t_obj_dec;
+
+typedef struct	s_objsize
+{
+  t_shape_type	shape;
+  ssize_t	size;
+}		t_objsize;
 
 /*
 ** Translations
@@ -276,5 +290,19 @@ sfColor			color_brightness(sfColor color, float multiplier);
 sfVector3f     calc_dir_vector(float dist_to_plane,
 			       sfVector2i iscreen_size,
 			       sfVector2i screen_pos);
+
+/*
+** Reader
+*/
+char	fill_struct(int fd, t_scene *scene);
+int	my_strlen(char *str);
+int	my_strcmp(char *s1, char *s2);
+ssize_t	my_read(int fd, void *buf, size_t count);
+
+/*
+** Free functions
+*/
+void	free_scene(t_scene *scene);
+void	free_all(t_win *win, t_scene *scene);
 
 #endif
