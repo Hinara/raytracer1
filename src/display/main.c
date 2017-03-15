@@ -5,57 +5,35 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:00:48 2017 Robin MILAS
-** Last update Sat Mar 11 18:38:34 2017 Milas Robin
+** Last update Tue Mar 14 14:34:11 2017 Milas Robin
 */
 
+#include <unistd.h>
+#include <fcntl.h>
 #include "raytracer.h"
 
-int		main()
+int		main(int ac, char **av)
 {
   t_scene	scene;
-  t_coord3d	coord3d;
   t_win		win;
+  int		fd;
 
-  coord3d.pos = vector_create(-70, 40, 25);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (init_scene(&scene, coord3d, sfBlack) < 0)
-    return (1);
-  scene.light.x = 0.0f;
-  scene.light.y = 100.0f;
-  scene.light.z = 32.0f;
-  coord3d.pos = vector_create(0, 0, -20);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (add_plane(&scene, coord3d, sfCyan) < 0)
-    return (1);
-  coord3d.pos = vector_create(0, 0, 0);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (add_sphere(&scene, coord3d, sfYellow, 30) < 0)
-    return (1);
-  coord3d.pos = vector_create(0, -80, 0);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (add_cone(&scene, coord3d, sfWhite, 45) < 0)
-    return (1);
-  coord3d.pos = vector_create(0, 10, 0);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (add_sphere(&scene, coord3d, sfRed, 30) < 0)
-    return (1);
-  coord3d.pos = vector_create(0, -10, 0);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (add_sphere(&scene, coord3d, sfBlue, 30) < 0)
-    return (1);
-  coord3d.pos = vector_create(0, 30, 0);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (add_sphere(&scene, coord3d, sfMagenta, 30) < 0)
-    return (1);
-  coord3d.pos = vector_create(-50, 40, 0);
-  coord3d.rot = vector_create(45, 0, 0);
-  if (add_cylinder(&scene, coord3d, sfGreen, 10) < 0)
-    return (1);
-  coord3d.pos = vector_create(200, 40, 0);
-  coord3d.rot = vector_create(0, 0, 0);
-  if (add_cylinder(&scene, coord3d, sfGreen, 10) < 0)
-    return (1);
-  win.fb = my_framebuffer_create(1080, 720);
+  if (ac < 2)
+    {
+      return (my_print("Need a file to work\n", 2, 0));
+    }
+  if (access(av[1], F_OK) < 0)
+    return (0);
+  if ((fd = open(av[1], O_RDONLY)) < 0)
+    {
+      return (my_print(UNREADABLE, 2, 1));
+    }
+  if (fill_struct(fd, &scene) < 0)
+    {
+      return (my_print(INVALID, 2, 1));
+    }
+  close(fd);
+  win.fb = my_framebuffer_create(800, 600);
   if (!win.fb.pixels)
     return (my_print("Error creating framebuffer!\n", 1, 84));
   return (window(&scene, &win));
