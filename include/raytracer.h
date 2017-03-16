@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 11:05:14 2017 Robin MILAS
-** Last update Tue Mar 14 14:28:28 2017 Milas Robin
+** Last update Thu Mar 16 17:17:40 2017 Milas Robin
 */
 
 #ifndef _RAYTRACER_H_
@@ -71,7 +71,7 @@ typedef struct	s_my_framebuffer
   int		width;
   int		height;
 }
-  t_my_framebuffer;
+		t_my_framebuffer;
 
 /*
 ** CSFML Data structure
@@ -142,7 +142,7 @@ typedef float (*t_intersect)(sfVector3f *pos,
 ** Define a type for normals decoders
 */
 typedef sfVector3f (*t_normal)(sfVector3f *pos,
-			       sfVector3f *dir, t_obj *obj, float k) ;
+			       sfVector3f *dir, t_obj *obj, float k);
 
 /*
 ** Use to make an array of pointer with shape type as index
