@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Wed Feb  8 13:46:33 2017 Robin MILAS
-** Last update Tue Mar 14 14:34:50 2017 Milas Robin
+** Last update Thu Mar 16 13:18:34 2017 Milas Robin
 */
 
 #include <math.h>
@@ -37,7 +37,7 @@ float		find_cos(t_scene *scene, sfVector3f *dir, t_obj *obj, float k)
   pos = rev_translate(scene->cam.pos, obj->coord.pos);
   pos = rotate_zyx(pos, vector_reverse(obj->coord.rot));
   c_dir = rotate_zyx(*dir, vector_reverse(obj->coord.rot));
-  light_v = rev_translate(scene->light, vector_move(scene->cam.pos, c_dir, k));
+  light_v = rev_translate(scene->light, vector_move(scene->cam.pos, *dir, k));
   if ((normal = normal_decoder(obj->shape.shape)) != NULL)
     {
       normal_v = normal(&pos, &c_dir, obj, k);
