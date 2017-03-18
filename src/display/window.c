@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Feb 21 11:21:00 2017 Robin MILAS
-** Last update Tue Mar 14 14:28:01 2017 Milas Robin
+** Last update Sat Mar 18 17:46:50 2017 Milas Robin
 */
 
 #include <stdlib.h>
@@ -74,7 +74,6 @@ int			window(t_scene *scene, t_win *win)
       if (ret)
 	return (ret);
     }
-  sfRenderWindow_destroy(win->window);
   free_all(win, scene);
   return (0);
 }

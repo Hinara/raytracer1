@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Thu Jan 12 19:30:55 2017 Robin MILAS
-** Last update Wed Mar 15 11:37:31 2017 Milas Robin
+** Last update Sat Mar 18 17:50:21 2017 Milas Robin
 */
 
 #include <fcntl.h>
@@ -74,8 +74,7 @@ int	main(int ac, char **av)
     return (1);
   while (!app.exit)
     {
-      if (isatty(0))
-	write(1, PROMPT, my_strlen(PROMPT));
+      write(1, PROMPT, my_strlen(PROMPT));
       if ((line = get_next_line(0)) == NULL)
 	break ;
       table = my_str_to_wordtab(line);
