@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:25:53 2017 Robin MILAS
-** Last update Tue Mar  7 21:02:44 2017 Robin MILAS
+** Last update Sat Mar 18 17:36:11 2017 Milas Robin
 */
 
 #include <math.h>
@@ -24,6 +24,6 @@ sfVector3f	get_normal_plane(int upward)
 float	intersect_plane(sfVector3f pos, sfVector3f dir)
 {
   if (dir.z == 0.0)
-    return (NAN);
+    return (-1.0f);
   return (-(pos.z / dir.z));
 }

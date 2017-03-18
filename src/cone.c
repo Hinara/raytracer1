@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Jan  3 14:36:45 2017 Robin MILAS
-** Last update Fri Mar 17 12:55:21 2017 Milas Robin
+** Last update Fri Mar 17 20:43:12 2017 Milas Robin
 */
 
 #include <math.h>
@@ -15,14 +15,7 @@
 sfVector3f	get_normal_cone(sfVector3f intersection_point,
 				float semiangle)
 {
-  if (semiangle <= 0 || semiangle >= 90)
-    {
-      intersection_point.x = 0.0f;
-      intersection_point.y = 0.0f;
-      intersection_point.z = 0.0f;
-      return (intersection_point);
-    }
-  intersection_point.z *= -cos(semiangle * M_PI / 180);
+  intersection_point.z *= -tan(semiangle * M_PI / 180);
   return (intersection_point);
 }
 
