@@ -5,7 +5,7 @@
 ** Login   <robin.milas@epitech.net>
 ** 
 ** Started on  Tue Mar  7 21:58:14 2017 Robin MILAS
-** Last update Mon Mar 13 18:21:56 2017 Milas Robin
+** Last update Mon Mar 20 11:59:08 2017 Milas Robin
 */
 
 #include <math.h>
@@ -22,8 +22,8 @@ float	intersection(double a, double b, double c)
       return (-1.0f);
     }
   else if (d == 0.0)
-    {
-      return (-b / (2 * a));
+    {  
+      return (((t1 = (-b / (2 * a))) >= 0) ? t1 : -1.0f);
     }
   else
     {
