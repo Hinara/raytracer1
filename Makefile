@@ -5,12 +5,12 @@
 ## Login   <robin.milas@epitech.net>
 ## 
 ## Started on  Mon Dec  5 18:52:38 2016 Robin MILAS
-## Last update Tue Mar 14 16:26:04 2017 Milas Robin
+## Last update Tue Apr 25 20:45:44 2017 Milas Robin
 ##
 
 CC	=	gcc
 
-RM	=	rm -f
+RM	=	rm -fr
 
 SRCS	=	src/display/color.c		\
 		src/display/control.c		\
@@ -42,20 +42,29 @@ OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	raytracer
 
-CFLAGS	=	-Wall -Wextra -Werror -I./include -pedantic -ffast-math -O3
+DEPS	=	deps
 
-LDFLAGS	=	-lm -lc_graph_prog
+CFLAGS	=	-Wall -Wextra -Werror -I./include -pedantic -ffast-math -O3 -I$(DEPS)/include
+
+LDFLAGS	=	-lm -lc_graph_prog -L$(DEPS)/lib
 
 all	:	$(NAME)
 
-$(NAME)	:	$(OBJS)
+$(NAME)	:	deps $(OBJS)
 		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS)
+
+deps	:
+		mkdir $(DEPS)
+		wget "https://cdn.local.epitech.eu/elearning/B-MUL-151/C_Graph_Prog_Installer_Full-v1.2.0.tar" -O - | tar -x
+		mv installer/lib $(DEPS)/lib/
+		mv installer/include $(DEPS)/include/
+		$(RM) installer
 
 clean	:
 		$(RM) $(OBJS)
 
 fclean	:
-		$(RM) $(NAME) $(OBJS)
+		$(RM) $(NAME) $(OBJS) $(DEPS)
 
 re	:	fclean all
 
