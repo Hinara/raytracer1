@@ -5,7 +5,7 @@
 ## Login   <robin.milas@epitech.net>
 ## 
 ## Started on  Mon Dec  5 18:52:38 2016 Robin MILAS
-## Last update Tue Apr 25 20:45:44 2017 Milas Robin
+## Last update Tue Apr 25 20:49:37 2017 Milas Robin
 ##
 
 CC	=	gcc
@@ -44,7 +44,7 @@ NAME	=	raytracer
 
 DEPS	=	deps
 
-CFLAGS	=	-Wall -Wextra -Werror -I./include -pedantic -ffast-math -O3 -I$(DEPS)/include
+CFLAGS	=	-Wall -Wextra -Werror -I./include -ffast-math -O3 -I$(DEPS)/include
 
 LDFLAGS	=	-lm -lc_graph_prog -L$(DEPS)/lib
 
